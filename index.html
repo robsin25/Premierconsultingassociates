@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Premier Consulting Associates LLC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+```
+:root {
+  --black: #0e0e0e;
+  --white: #f9f7f4;
+  --gold: #b89b6a;
+  --gray: #6b6b6b;
+  --light: #e8e4dd;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 60px;
+  background: var(--white);
+  border-bottom: 1px solid var(--light);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--black);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 60px 80px;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 40%;
+  height: 100%;
+  background: var(--light);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+.hero-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.2s;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.4s;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-sub {
+  font-size: 0.85rem;
+  line-height: 1.9;
+  color: var(--gray);
+  max-width: 480px;
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.6s;
+}
+
+.hero-cta {
+  display: inline-block;
+  padding: 14px 36px;
+  border: 1px solid var(--black);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--black);
+  text-decoration: none;
+  transition: all 0.3s;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.8s;
+}
+
+.hero-cta:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+/* DIVIDER */
+.divider {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0 60px;
+}
+
+/* SERVICES */
+.services {
+  padding: 120px 60px;
+}
+
+.section-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  margin-bottom: 64px;
+  max-width: 500px;
+  line-height: 1.2;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2px;
+}
+
+.service-card {
+  padding: 48px 40px;
+  background: var(--white);
+  border: 1px solid var(--light);
+  transition: border-color 0.3s;
+}
+
+.service-card:hover { border-color: var(--gold); }
+
+.service-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  color: var(--light);
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 24px;
+}
+
+.service-name {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  color: var(--black);
+}
+
+.service-desc {
+  font-size: 0.82rem;
+  line-height: 1.8;
+  color: var(--gray);
+}
+
+/* ABOUT */
+.about {
+  padding: 120px 60px;
+  background: var(--black);
+  color: var(--white);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about .section-title {
+  color: var(--white);
+}
+
+.about-text {
+  font-size: 0.85rem;
+  line-height: 2;
+  color: rgba(249,247,244,0.6);
+  margin-bottom: 32px;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.stat-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(249,247,244,0.4);
+}
+
+/* CONTACT */
+.contact {
+  padding: 120px 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.contact-value {
+  font-size: 0.85rem;
+  color: var(--black);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-value:hover { color: var(--gold); }
+
+/* FOOTER */
+footer {
+  padding: 32px 60px;
+  border-top: 1px solid var(--light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-copy {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--gray);
+}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 20px 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 100px 24px 60px; }
+  .hero::before { display: none; }
+  .divider { margin: 0 24px; }
+  .services { padding: 80px 24px; }
+  .about { padding: 80px 24px; grid-template-columns: 1fr; gap: 40px; }
+  .contact { padding: 80px 24px; grid-template-columns: 1fr; gap: 40px; }
+  footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+}
+```
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+
+  <nav>
+    <a href="#" class="nav-logo">Premier Consulting Associates</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Premier Consulting Associates LLC — Detroit, MI</p>
+      <h1 class="hero-title">Strategic Solutions<br>for <em>Growing</em><br>Businesses</h1>
+      <p class="hero-sub">We provide consulting, operational support, and asset management services to help entrepreneurs and small businesses build sustainable, scalable operations.</p>
+      <a href="#contact" class="hero-cta">Get in Touch</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SERVICES -->
+
+  <section class="services" id="services">
+    <p class="section-label">What We Do</p>
+    <h2 class="section-title">Comprehensive Business Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-number">01</div>
+        <div class="service-name">Business Consulting</div>
+        <p class="service-desc">Strategic guidance for entrepreneurs navigating growth, operations, and business development at every stage.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-number">02</div>
+        <div class="service-name">Asset Management</div>
+        <p class="service-desc">Professional management of business assets including fleet and property, focused on maximizing returns and operational efficiency.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-number">03</div>
+        <div class="service-name">Operational Support</div>
+        <p class="service-desc">End-to-end operational systems, contracts, and processes that help small businesses run professionally and scale with confidence.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-number">04</div>
+        <div class="service-name">Financial Strategy</div>
+        <p class="service-desc">Practical financial planning and positioning to help business owners build credit, manage cash flow, and prepare for growth capital.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+
+  <section class="about" id="about">
+    <div>
+      <p class="section-label" style="color: var(--gold);">About Us</p>
+      <h2 class="section-title">Built for the Modern Entrepreneur</h2>
+    </div>
+    <div>
+      <p class="about-text">Premier Consulting Associates LLC is a Detroit-based business consulting and asset management firm. We work with entrepreneurs and small business owners to build strong operational foundations, professional business infrastructure, and long-term financial independence.</p>
+      <p class="about-text">Our approach is practical, hands-on, and results-driven — built for business owners who are serious about scaling.</p>
+      <div class="about-stats">
+        <div>
+          <div class="stat-number">LLC</div>
+          <div class="stat-label">Registered Entity</div>
+        </div>
+        <div>
+          <div class="stat-number">MI</div>
+          <div class="stat-label">Metro Detroit Based</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+
+  <section class="contact" id="contact">
+    <div>
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">Let's Work Together</h2>
+    </div>
+    <div class="contact-info">
+      <div class="contact-item">
+        <span class="contact-label">Email</span>
+        <a href="mailto:robert@premierconsultingassociates.com" class="contact-value">robert@premierconsultingassociates.com</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Phone</span>
+        <a href="tel:+1" class="contact-value">Available upon inquiry</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Location</span>
+        <span class="contact-value">Metro Detroit, Michigan</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Business Hours</span>
+        <span class="contact-value">Monday – Friday, 9am – 6pm EST</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <span class="footer-copy">© 2026 Premier Consulting Associates LLC. All rights reserved.</span>
+    <span class="footer-logo">PCA</span>
+  </footer>
+
+</body>
+</html>
